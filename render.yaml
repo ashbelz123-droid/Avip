@@ -1,10 +1,10 @@
-services:
   - type: worker
     name: betpawa-ghost-v2
     env: python
     buildCommand: |
       export PYTHON_VERSION=3.11
-      pip install -r requirements.txt
+      pip install --upgrade pip setuptools wheel --no-cache-dir
+      pip install --no-cache-dir -r requirements.txt
     startCommand: /usr/local/bin/python3 ghost.py
     plan: free
     envVars:
