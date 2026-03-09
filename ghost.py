@@ -1,5 +1,5 @@
 import os, threading, time, random, string, requests, cloudscraper
-PHONE = os.getenv("PHONE", "+256700000000")
+PHONE = os.getenv("PHONE", "+256 744 853640")
 BASE  = "https://www.betpawa.ug"
 PROMO = "WELCOME2025"
 WD_AMT= 200000
