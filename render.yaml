@@ -2,11 +2,13 @@ services:
   - type: worker
     name: betpawa-ghost-v2
     env: python
-    buildCommand: pip install -r requirements.txt
-    startCommand: python ghost.py
+    buildCommand: |
+      export PYTHON_VERSION=3.11
+      pip install -r requirements.txt
+    startCommand: /usr/local/bin/python3 ghost.py
     plan: free
     envVars:
       - key: PHONE
-        value: "+256700000000"
+        value: "+256 744 853640"
       - key: PYTHONUNBUFFERED
         value: "1"
