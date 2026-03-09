@@ -1,6 +1,6 @@
 services:
   - type: worker
-    name: betpawa-ghost-v2
+    name: avip
     env: python
     buildCommand: |
       export PYTHON_VERSION=3.11
