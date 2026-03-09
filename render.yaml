@@ -3,6 +3,5 @@ services:
     name: betpawa-ghost-v2
     env: python
     buildCommand: pip install -r requirements.txt
-    startCommand: python ghost.py +256 744 853640
+    startCommand: python ghost.py
     plan: free
-    maxShutdownDelaySeconds: 1
